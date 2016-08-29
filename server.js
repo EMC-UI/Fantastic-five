@@ -21,7 +21,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use('/api', routes);
+app.use('/api', routes(express));
 
 server.listen(app.get('port') || 3000, app.get('ip') || '0.0.0.0', function () {
   console.log('ping has started..')
