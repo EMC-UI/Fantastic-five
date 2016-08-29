@@ -2,7 +2,7 @@ module.exports = function (express) {
   var router = express.Router()
   var jwt = require('jsonwebtoken')
   router.use(function (req, res, next) {
-    console.log('headers:', req.headers)
+    // console.log('headers:', req.headers)
     if (req.headers.authorization) {
       jwt.verify(req.headers.authorization, 'a super secret phrase', 
       function (err, user) {
