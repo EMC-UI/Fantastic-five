@@ -3,7 +3,7 @@
  */
 var bcrypt = require('bcrypt')
 var User = require('../../mongo-models/user');
-// var Question = require('../../mongo-models/question');
+var Question = require('../../mongo-models/questions');
 
 module.exports = function (express) {
   var router = express.Router()
