@@ -3,7 +3,7 @@
  */
 
 var User = require('../../mongo-models/user');
-var Question = require('../../mongo-models/question');
+var Question = require('../../mongo-models/questions');
 
 exports.post = function(req, res) {
 	var payload = {}
