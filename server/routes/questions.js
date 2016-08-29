@@ -4,7 +4,7 @@ var Question = require('../../mongo-models/questions');
 module.exports = function (express) {
     var router = express.Router()
 
-    // /api/questions
+    // POST /api/questions
     router.route('/')
         .post(function (req, res) {
             console.log('body: ', req.body)
@@ -23,17 +23,17 @@ module.exports = function (express) {
             })
         })
 
-        // /api/questions
+        // GET (SEARCH) /api/questions
         router.route('/')
         .get(function (req, res) {
             var titleParam = req.query.title
             console.log('search text: ', titleParam)
-            Question.find({}, function(err, questions) {
+            Question.find({title : titleParam}, function(err, questions) {
                 res.status(200).json(questions);
             })
         })
 
-        // /api/questions/{id}
+        // GET by Id /api/questions/{id}
         router.route('/:_id')
         .get(function (req, res) {
             console.log('Getting question by id: '), req.params._id
