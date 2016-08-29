@@ -7,16 +7,10 @@ var User = require('../../mongo-models/user');
 
 module.exports = function (express) {
   var router = express.Router()
-  
-  router.route('/') // /api/users/
+  router.route('/signup') // /api/users/
   .post(function (req, res, next) {
     console.log('body:', req.body)
     if (!req.body) return res.status(400).json({error: 'empty payload'})
-    // var payload = {}
-    // if (payload.userName) payload.userName = req.body.username
-    // if (payload.password) payload.password = req.body.password  //need to hash the pwd
-    // if (payload.email) payload.email = req.body.email
-    // if (payload.isAdmin) payload.isAdmin = req.body.isAdmin
     var newU = new User(req.body);
     newU.save(function (err, user) {
       if (err) {
@@ -28,6 +22,39 @@ module.exports = function (express) {
       }
     })
   })
+  router.route('/login') // /api/users/
+  .post(function (req, res, next) {
+    console.log('body:', req.body)
+    if (!req.body) return res.status(400).json({error: 'empty payload'})
+    var newU = new User(req.body);
+    User.findOne({
+      username: req.body.username,
+      password: req.body.password
+    }, '-password', function (err, user) {
+      if (err) {
+        return res.status(401).json({error: 'unauthorized'})
+      }
+      if (!user) {
+        return res.status(401).json({error: 'unauthorized'})
+      }
+      res.status(200).json(user)
+    })
+  })
+  router.route('/') // /api/users/
+  // .post(function (req, res, next) {
+  //   console.log('body:', req.body)
+  //   if (!req.body) return res.status(400).json({error: 'empty payload'})
+  //   var newU = new User(req.body);
+  //   newU.save(function (err, user) {
+  //     if (err) {
+  //       console.error(err)
+  //     	res.status(400).json({'error':err})
+  //     } else {
+  //       console.info('user added')
+  //       res.status(201).json(user)
+  //     }
+  //   })
+  // })
   .get(function (req, res, next) {
     User.find({}, '-password', function(err, users) {
       if (err) {
