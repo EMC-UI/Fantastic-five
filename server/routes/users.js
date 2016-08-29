@@ -3,37 +3,44 @@
  */
 
 var User = require('../../mongo-models/user');
-var Question = require('../../mongo-models/question');
+// var Question = require('../../mongo-models/question');
 
-exports.post = function(req, res) {
-	var payload = {}
-	if (payload.userName) payload.userName = req.body.userName
-	if (payload.password) payload.password = req.body.password  //need to hash the pwd
-	if (payload.email) payload.email = req.body.email
-	if (payload.isAdmin) payload.isAdmin = req.body.isAdmin
-    newU = new User(body);
-    newU.save(function (err, question) {
-  	if (err) return console.error(err);
- 	console.info('user added')
-}
+module.exports = function() {
+  var router = express.Router()
+  
+  router.route('/') // /api/users/
+  .post(function (req, res, next) {
+    console.log('body:', req.body)
+    var payload = {}
+    if (payload.userName) payload.userName = req.body.username
+    if (payload.password) payload.password = req.body.password  //need to hash the pwd
+    if (payload.email) payload.email = req.body.email
+    if (payload.isAdmin) payload.isAdmin = req.body.isAdmin
+    var newU = new User(req.body);
+    newU.save(function (err, user) {
+      if (err) return console.error(err)
+      console.info('user added')
+      res.json(user)
+    })
+  })
+  .get(function (req, res, next) {
+    User.find(function(err, users) {
+      res.json(users);
+    })
+  })
+  router.route('/:id')
+  .get(function (req, res, next) {
+    User.findOne({_id: req.params._id}, function (error, user) {
+      if (err) return console.log(err)
+      res.json(user);        
+    });
+  })
 
-exports.getall = function(req, res) {
-  User.find(function(err, users) {
-    res.send(users);
-  });
-}
-
-exports.getById = function(req, res) {
-    User.findOne({_id: req.params._id}, function(error, user) {
-    	res.send(user);        
-});
-}
-
-exports.getByName = function(req, res) {
-    User.findOne({userName: req.params.userName}, function(error, user) {
-    	res.send(user);        
-});
-}
+// exports.getByName = function(req, res) {
+//     User.findOne({userName: req.params.userName}, function(error, user) {
+//     	res.send(user);        
+// });
+// }
 
 // first locates a user by id, then locates the questions by user id.
 exports.getUserQuestsById = (function(req, res) {
@@ -43,3 +50,5 @@ exports.getUserQuestsById = (function(req, res) {
         });
     })
 });
+  return router
+}
