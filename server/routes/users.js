@@ -5,7 +5,7 @@
 var User = require('../../mongo-models/user');
 // var Question = require('../../mongo-models/question');
 
-module.exports = function() {
+module.exports = function (express) {
   var router = express.Router()
   
   router.route('/') // /api/users/
@@ -18,7 +18,10 @@ module.exports = function() {
     if (payload.isAdmin) payload.isAdmin = req.body.isAdmin
     var newU = new User(req.body);
     newU.save(function (err, user) {
-      if (err) return console.error(err)
+      if (err) {
+        console.error(err)
+        return res.status(500).json(err)
+      }
       console.info('user added')
       res.json(user)
     })
