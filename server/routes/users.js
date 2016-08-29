@@ -3,12 +3,8 @@
  */
 var bcrypt = require('bcrypt')
 var User = require('../../mongo-models/user');
-<<<<<<< HEAD
 var jwt = require('jsonwebtoken')
-// var Question = require('../../mongo-models/question');
-=======
 var Question = require('../../mongo-models/questions');
->>>>>>> origin
 
 module.exports = function (express) {
   var router = express.Router()
