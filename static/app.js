@@ -1,0 +1,1 @@
+var emcPingApp = angular.module("emcping", []);
