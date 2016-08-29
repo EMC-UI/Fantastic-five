@@ -1,5 +1,4 @@
 
-//var User = require('../../mongo-models/user');
 var Question = require('../../mongo-models/questions');
 
 module.exports = function (express) {

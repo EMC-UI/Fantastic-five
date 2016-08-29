@@ -2,14 +2,17 @@
 <html lang="en">
 <head>
     <title>EMC ping</title>
-    <script src="/Users/shyams1/angular-1.4.8/angular.min.js" ></script>
-    <!--<script src="app.js" ></script>-->
-    <!--<script src="loginCtrl.js" ></script>-->
-    <!--<script src="userLoginCtrl.js" ></script>-->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="app/app.js" ></script>
+    <script src="indexCtrl.js" ></script>
+
 </head>
-<body>
-<form name="homeForm"></form>
-<input type="button" value="Login" onclick="login()">
-<input type="button" value="SignUp" onclick="register()">
+<body ng-app="emcping">
+    <form name="indexForm" ng-controller="indexCtrl">
+        <div>
+            <input type="button" value="Login" ng-click="login()">
+            <input type="button" value="SignUp" ng-click="register()">
+        </div>
+    </form>
 </body>
 </html>
