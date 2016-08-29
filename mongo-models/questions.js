@@ -8,7 +8,7 @@
 var mongoose = require('mongoose');
 
 var answerSchema = mongoose.Schema({
-    content: { type: String, required: true, index: { unique: true, text: true }},
+    content: { type: String, required: true, index: { text: true }},
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'Users', required: true },
     timeStamp: {type: Date, default:Date.now},
 	isBest: {type: Boolean, default:false},
