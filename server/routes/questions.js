@@ -27,7 +27,7 @@ module.exports = function (express) {
         .get(function (req, res) {
             var titleParam = req.query.title
             console.log('search text: ', titleParam)
-            Question.find(function(err, questions) {
+            Question.find({}, function(err, questions) {
                 res.status(200).json(questions);
             })
         })
