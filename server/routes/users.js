@@ -11,11 +11,12 @@ module.exports = function (express) {
   router.route('/') // /api/users/
   .post(function (req, res, next) {
     console.log('body:', req.body)
-    var payload = {}
-    if (payload.userName) payload.userName = req.body.username
-    if (payload.password) payload.password = req.body.password  //need to hash the pwd
-    if (payload.email) payload.email = req.body.email
-    if (payload.isAdmin) payload.isAdmin = req.body.isAdmin
+    if (!req.body) return res.status(400).json({error: 'empty payload'})
+    // var payload = {}
+    // if (payload.userName) payload.userName = req.body.username
+    // if (payload.password) payload.password = req.body.password  //need to hash the pwd
+    // if (payload.email) payload.email = req.body.email
+    // if (payload.isAdmin) payload.isAdmin = req.body.isAdmin
     var newU = new User(req.body);
     newU.save(function (err, user) {
       if (err) {
@@ -28,13 +29,17 @@ module.exports = function (express) {
     })
   })
   .get(function (req, res, next) {
-    User.find(function(err, users) {
+    User.find({}, '-password', function(err, users) {
+      if (err) {
+      	res.status(400).json({'error':err})
+      } else {
       res.status(200).json(users);
+      }
     })
   })
-  router.route('/:id')
+  router.route('/:_id')
   .get(function (req, res, next) {
-    User.findOne({_id: req.params._id}, function (error, user) {
+    User.findOne({_id: req.params._id}, '-password', function (err, user) {
       if (err) {
       	res.status(400).json({'error':err})
       } else {
