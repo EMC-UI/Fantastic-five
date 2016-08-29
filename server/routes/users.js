@@ -73,8 +73,8 @@ module.exports = function (express) {
       if (err) {
       	res.status(400).json({'error':err})
       } else {
-      console.info('Found the user')
-      res.status(200).json(user)
+        console.info('Found the user')
+        res.status(200).json(user)
       }     
     });
   })
