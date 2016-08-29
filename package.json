@@ -1,0 +1,19 @@
+{
+  "name": "fantastic-five",
+  "version": "1.0.0",
+  "description": "Team 8 project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EMC-UI/Fantastic-five.git"
+  },
+  "author": "Nathan Bland <nathan.bland@gmail.com> (https://nathanbland.github.io/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EMC-UI/Fantastic-five/issues"
+  },
+  "homepage": "https://github.com/EMC-UI/Fantastic-five#readme"
+}
