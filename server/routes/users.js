@@ -1,7 +1,7 @@
 /**
  * @author Administrator
  */
-
+var bcrypt = require('bcrypt')
 var User = require('../../mongo-models/user');
 // var Question = require('../../mongo-models/question');
 
@@ -10,6 +10,8 @@ module.exports = function (express) {
   router.route('/signup') // /api/users/
   .post(function (req, res, next) {
     console.log('body:', req.body)
+    req.body.password = bcrypt.hashSync(req.body.password, 10)
+    console.log('pass hash:', req.body.password)
     if (!req.body) return res.status(400).json({error: 'empty payload'})
     var newU = new User(req.body);
     newU.save(function (err, user) {
@@ -29,7 +31,7 @@ module.exports = function (express) {
     var newU = new User(req.body);
     User.findOne({
       username: req.body.username,
-      password: req.body.password
+      password: bcrypt.hashSync(req.body.password, 10)
     }, '-password', function (err, user) {
       if (err) {
         return res.status(401).json({error: 'unauthorized'})
