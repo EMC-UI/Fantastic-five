@@ -8,7 +8,8 @@ var User = require('../../mongo-models/user');
 module.exports = function (express) {
   var router = express.Router()
   
-  router.route('/') // /api/users/
+  // /api/users/
+  router.route('/') 
   .post(function (req, res, next) {
     console.log('body:', req.body)
     var payload = {}
@@ -27,11 +28,13 @@ module.exports = function (express) {
       }
     })
   })
+  // /api/users
   .get(function (req, res, next) {
     User.find(function(err, users) {
       res.status(200).json(users);
     })
   })
+  // /api/users/{id}
   router.route('/:id')
   .get(function (req, res, next) {
     User.findOne({_id: req.params._id}, function (error, user) {
