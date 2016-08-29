@@ -25,6 +25,7 @@ module.exports = function (express) {
         })
 
         // /api/questions
+        router.route('/')
         .get(function (req, res) {
             var titleParam = req.query.title
             console.log('search text: ', titleParam)
@@ -32,6 +33,16 @@ module.exports = function (express) {
                 res.status(200).json(questions);
             })
         })
+
+        // /api/questions/{id}
+        router.route('/:_id')
+        .get(function (req, res) {
+            console.log('Getting question by id: '), req.params._id
+            Question.findone({_id: req.params._id}, function (err, questions) {
+                res.status(200).json(questions);
+            })
+        })
+
 
     return router
 }
