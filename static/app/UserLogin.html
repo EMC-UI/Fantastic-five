@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EMC Ping</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="../controllers/UserLogin.js"></script>
+</head>
+<body>
+
+<div ng-app="userdetails", ng-controller="UserLoginController">
+    <h1>EMC Ping - Answers your questions!</h1>
+    <form>
+        Sign up as a new user <br> <br>
+        Username <input type="text" ng-model="formData.username" required><br><br>
+        Email <input type="email" ng-model="formData.email" required><br><br>
+        Password <input type="password" ng-model="formData.password" required><br><br>
+        Confirm Password <input type="password" ng-model="formData.confirmpassword" required><br><br>
+        <span ng-show="!areStringsEqual(formData.password, formData.confirmpassword)">Passwords are not matching</span><br><br>
+        <button name="Submit" ng-click="submit()", ng-disabled="!areStringsEqual(formData.password, formData.confirmpassword)">Submit</button><br><br>
+        <span ng-bind="message" ></span >"
+    </form>
+
+</div>
+
+
+</body>
+</html>
