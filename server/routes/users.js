@@ -43,20 +43,6 @@ module.exports = function (express) {
     })
   })
   router.route('/') // /api/users/
-  // .post(function (req, res, next) {
-  //   console.log('body:', req.body)
-  //   if (!req.body) return res.status(400).json({error: 'empty payload'})
-  //   var newU = new User(req.body);
-  //   newU.save(function (err, user) {
-  //     if (err) {
-  //       console.error(err)
-  //     	res.status(400).json({'error':err})
-  //     } else {
-  //       console.info('user added')
-  //       res.status(201).json(user)
-  //     }
-  //   })
-  // })
   .get(function (req, res, next) {
     User.find({}, '-password', function(err, users) {
       if (err) {
@@ -66,6 +52,7 @@ module.exports = function (express) {
       }
     })
   })
+  // /api/users/{id}
   router.route('/:_id')
   .get(function (req, res, next) {
     User.findOne({_id: req.params._id}, '-password', function (err, user) {
