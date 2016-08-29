@@ -3,6 +3,7 @@
  */
 var bcrypt = require('bcrypt')
 var User = require('../../mongo-models/user');
+var jwt = require('jsonwebtoken')
 // var Question = require('../../mongo-models/question');
 
 module.exports = function (express) {
@@ -17,10 +18,15 @@ module.exports = function (express) {
     newU.save(function (err, user) {
       if (err) {
         console.error(err)
-      	res.status(400).json({'error':err})
+        if (err.code === 11000) {
+          res.status(400).json({'error': 'Username already in use.'})
+        } else {
+          res.status(400).json({'error': err})
+        }
       } else {
         console.info('user added')
-        res.status(201).json(user)
+        var token = jwt.sign(user, 'a super secret phrase');
+        res.status(201).json({username: user.username, token: token})
       }
     })
   })
@@ -30,16 +36,21 @@ module.exports = function (express) {
     if (!req.body) return res.status(400).json({error: 'empty payload'})
     var newU = new User(req.body);
     User.findOne({
-      username: req.body.username,
-      password: bcrypt.hashSync(req.body.password, 10)
-    }, '-password', function (err, user) {
+      username: req.body.username
+    }, function (err, user) {
       if (err) {
         return res.status(401).json({error: 'unauthorized'})
       }
       if (!user) {
         return res.status(401).json({error: 'unauthorized'})
       }
-      res.status(200).json(user)
+      if (bcrypt.compareSync(req.body.password, user.password)) {
+        user.password = null
+        var token = jwt.sign(user, 'a super secret phrase');
+        res.status(201).json({username: user.username, token: token})
+      } else {
+        return res.status(401).json({error: 'unauthorized'})
+      }
     })
   })
   router.route('/') // /api/users/
@@ -55,6 +66,9 @@ module.exports = function (express) {
   // /api/users/{id}
   router.route('/:_id')
   .get(function (req, res, next) {
+    if (req.user) {
+      console.log('authenticated request')
+    }
     User.findOne({_id: req.params._id}, '-password', function (err, user) {
       if (err) {
       	res.status(400).json({'error':err})
