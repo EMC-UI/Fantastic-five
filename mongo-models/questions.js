@@ -12,7 +12,7 @@ var answerSchema = mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'Users', required: true },
     timeStamp: {type: Date, default:Date.now},
 	isBest: {type: Boolean, default:false},
-	votes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Users', required: true }]
+	votes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Users'}]
 });
 
 var questionSchema = mongoose.Schema({
@@ -23,7 +23,7 @@ var questionSchema = mongoose.Schema({
     answers: [answerSchema],
     createdTimeStamp: {type: Date, default:Date.now},
 	modifiedTimeStamp: {type: Date, default:Date.now},
-	votes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Users', required: true }]
+	votes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Users'}]
 });
 
 var Questions = mongoose.model('Questions', questionSchema);
