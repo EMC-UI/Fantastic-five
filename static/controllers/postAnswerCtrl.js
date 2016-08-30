@@ -26,6 +26,7 @@ emcPingApp.controller("postAnswerCtrl", function($scope, $location, loginService
                     $scope.questionTitle = questionService.getQuestion().title;
                     $scope.questionContent = questionService.getQuestion().content;
                     $scope.answersList = questionService.getQuestion().answers;
+                    $scope.tags = questionService.getQuestion().tags;
                 },
                 function(response){
                     console.log("Question could not be searched");
@@ -36,6 +37,7 @@ emcPingApp.controller("postAnswerCtrl", function($scope, $location, loginService
         $scope.questionTitle = questionService.getQuestion().title;
         $scope.questionContent = questionService.getQuestion().content;
         $scope.answersList = questionService.getQuestion().answers;
+        $scope.tags = questionService.getQuestion().tags;
     };
 
 

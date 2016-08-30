@@ -4,7 +4,11 @@
 
     <!-- Content -->
     <p ng-model="questionContent">{{questionContent}}</p>
-    By User: <p ng-model="questionUser">{{questionUser}}</p>
+    <p style="color: #5bc0de" ng-model="questionUser">By User: {{questionUser}}</p>
+    Tags:
+    <span ng-repeat="tag in tags" class="label label-warning">
+        {{tag}}
+    </span>
     <hr>
 
     <p></p>
@@ -15,7 +19,7 @@
         <pre class='answer'>
         <p>{{answer.content}}</p>
 
-        <p>By User: {{answer.userId.username}}</p>
+        <p style="color: #5bc0de">By User: {{answer.userId.username}}</p>
         </pre>
     </div>
     <p></p>
