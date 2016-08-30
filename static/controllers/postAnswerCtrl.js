@@ -16,7 +16,7 @@ emcPingApp.controller("postAnswerCtrl", function($scope, $location, loginService
     };
 
     if(!questionService.getQuestion()) {
-        $http.get('http://128.222.159.134:3000/api/questions' + $routeParams.questionId)
+        $http.get('http://128.222.159.134:3000/api/questions/' + $routeParams.questionId)
             .then(function(response){
                     questionService.setQuestion(response.data);
                     console.log(questionService.getQuestion());
