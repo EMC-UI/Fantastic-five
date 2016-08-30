@@ -4,7 +4,7 @@
 emcPingApp.controller('askQuestionCtrl', function($scope, loginService, $rootScope, $http){
         $scope.submit = function(){
             $scope.newformData = {};
-            $scope.newformData.userId = "57c4a20ffcf9214175042538";
+            $scope.newformData.token = loginService.getToken();
             $scope.newformData.title = $scope.formData.title;
             $scope.newformData.content = $scope.formData.content;
             $scope.newformData.tags = $scope.formData.tags;

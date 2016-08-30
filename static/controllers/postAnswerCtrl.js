@@ -38,16 +38,21 @@ emcPingApp.controller("postAnswerCtrl", function($scope, $location, loginService
 
 
     $scope.postAnswer = function() {
+
+        $scope.answerFormData["token"] = loginService.getToken();
+
         var $request = $scope.generateRequest(   "POST",
-            "/questions/" + questionService.getQuestion()._id + " /answers",
+            "/questions/" + questionService.getQuestion()._id + "/answers",
             {'Content-Type': 'application/json'},
             $scope.answerFormData
         );
+
+        console.log($scope.answerFormData);
         $http($request).then(
             //Success callback
             function(response){
                 $scope.result = "Answer Posted Successfully!!!";
-                loginService.setToken(response.data.token);
+                //loginService.setToken(response.data.token);
             },
             // Error callback
             function(response){
