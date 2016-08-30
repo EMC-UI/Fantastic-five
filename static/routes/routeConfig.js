@@ -24,7 +24,10 @@ emcPingApp.config(function($routeProvider) {
             templateUrl : "views/showQuestion.html",
             controller: 'showQuestionCtrl'
         })
-
+        .when("/tag/:tagName", {
+            templateUrl : "views/tag.html",
+            controller: "tagCtrl"
+        })
         .otherwise({
             templateUrl : "views/emc_ping.html"
         });

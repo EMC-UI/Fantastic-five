@@ -27,16 +27,13 @@
 <div>    
     <div class="pageHeader">
         
-    <div class="pageLeftMenu">
+    <div class="pageLeftMenu" ng-controller="pingCtrl">
         <h2>Tags</h2>
         <nav>
             <ul>
-                <li><a href="#">AAA</a></li>
-                <li><a href="#">System Manager</a></li>
-                <li><a href="#">Secrets</a></li>
-                <li><a href="#">Secretsmgr</a></li>
-                <li><a href="#">license</a></li>
-                <li><a href="#">sysmgr</a></li>
+                <li ng-repeat="tag in tags">
+                    <a href="#tag/{{tag}}">{{tag}}</a>
+                </li>
             </ul>
         </nav>
     </div>
