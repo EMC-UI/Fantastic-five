@@ -46,9 +46,9 @@
         -->
 
             <!-- Menu Items -->
-            <div>
+            <div ng-controller="searchQuestionCtrl">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Top Questions</a></li>
+                    <li class="active"><a href="#searchQuestion" ng-click="recentQuestions()">Recent Questions</a></li>
                     <li><a href="#askQuestion">Ask a question</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
