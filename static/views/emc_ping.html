@@ -28,9 +28,9 @@
     <div class="pageHeader">
         
     <div class="pageLeftMenu">
-        <h2>Tags</h2>
+        <h2 class='tags--title'>Tags</h2>
         <nav>
-            <ul>
+            <ul class='tags--list'>
                 <li><a href="#">AAA</a></li>
                 <li><a href="#">System Manager</a></li>
                 <li><a href="#">Secrets</a></li>
@@ -41,7 +41,12 @@
         </nav>
     </div>
     <div class="pageSearch">
-        <input type="search" placeholder="Search..." style="width: 70%">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search for...">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button">Go!</button>
+          </span>
+        </div>
     </div>
     <div class="pageContent">
         <h2>Questions</h2>
