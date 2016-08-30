@@ -5,6 +5,7 @@
         <!--<button name="Submit" ng-click="submit()">Submit</button><br><br>-->
         <!--<span ng-bind="message"></span > <br>-->
         <span ng-show="searchResults.length==0">No results found</span><br><br>
+        <p></p>
         <div ng-repeat="x in searchResults">
             <a href="" ng-click="saveQuestion(x)">{{x.title}}</a><br>
             Description : {{x.content}}<br><br>
