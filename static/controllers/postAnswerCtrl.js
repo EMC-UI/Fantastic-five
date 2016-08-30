@@ -35,7 +35,7 @@ emcPingApp.controller("postAnswerCtrl", function($scope, $location, loginService
         $scope.questionContent = questionService.getQuestion().content;
         $scope.answersList = questionService.getQuestion().answers;
     };
-    
+
 
     $scope.postAnswer = function() {
         var $request = $scope.generateRequest(   "POST",

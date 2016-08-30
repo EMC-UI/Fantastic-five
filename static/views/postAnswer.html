@@ -6,9 +6,13 @@
     <p ng-model="questionContent">{{questionContent}}</p>
     <hr>
     <p></p>
+
     <!-- all answers till now -->
     <h2>Answers:</h2>
-    <p ng-model="answersList">{{answersList}}</p>
+    <div ng-repeat="answer in answersList" >
+        <p>{{answer.content}}</p>
+    </div>
+    <p></p>
 </div>
 
 <form name="answerForm" ng-controller="postAnswerCtrl">
