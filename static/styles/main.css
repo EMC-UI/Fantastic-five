@@ -1,0 +1,40 @@
+.pageHeader{
+    float : left;
+    #background-color: #5bc0de;
+    clear : none;
+    /*height : 100%;*/
+    width : 100%;
+    text-align: center;
+}
+
+.login{
+    #background-color: #4cae4c;
+    float : none;
+    clear : none;
+    /*height : 10%;*/
+    width : 100%;
+    text-align: end;
+}
+
+.pageLeftMenu{
+    #background-color: #ac2925;
+    float : left;
+    clear : none;
+    height : 100%;
+    width : 30%;
+}
+
+.pageSearch{
+    #background-color: #c85e17;
+    float : right;
+    clear : none;
+    /*height : 100px;*/
+    width : 70%;
+}
+.pageContent{
+    #background-color: silver;
+    float : right;
+    clear : none;
+    /*height : 600px;*/
+    width : 70%;
+}
