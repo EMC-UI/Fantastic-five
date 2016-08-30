@@ -1,14 +1,13 @@
-.user--form {
-  width: 300px;
-  margin: 0 auto;
-  margin-top: 5em;
-} 
+/*.user--form {*/
+  /*width: 300px;*/
+  /*margin: 0 auto;*/
+  /*margin-top: 5em;*/
+/*} */
 
-/*.body {
-    background-color: lightblue;
+.login {
     text-align: center;
     vertical-align: middle;
-}*/
+}
 
 /*.h1 {
     color: navy;
