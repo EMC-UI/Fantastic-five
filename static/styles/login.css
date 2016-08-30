@@ -1,4 +1,8 @@
-
+.user--form {
+  width: 300px;
+  margin: 0 auto;
+  margin-top: 5em;
+} 
 
 /*.body {
     background-color: lightblue;

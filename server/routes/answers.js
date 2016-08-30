@@ -22,25 +22,27 @@ module.exports = function(express) {
                     res.status(400).json({'error':err})
                 } else {
                     console.info('Found the question')
-                    res.status(200).json(question)
                 }
-                question.answers.push(req.body)
+                question.answers.push(req.body) // answer obj doesnt have an Id
                 question.save(function (err, savedAnswer) {
                     if(err) {
                         console.error(err)
                         res.status(400).json({'error':err})
                     } else {
-                        console.info("Answer added for the user")
+                        console.info("Answer added for the question")
                         res.status(200).json(savedAnswer)
                     }
                 })
             });
         })
 
-    // // PUT answer (Pick the best one)
+    // PUT answer (Pick the best one)
     // router.route('/:questionId/answers/:answerId')
     //     .put(function (req, res) {
     //         console.log('body: ', req.body)
+    //         if (req.user) {
+    //             console.log('authenticated request')
+    //         }
     //         if(!req.body) {
     //             return res.status(400).json({'error':'empty payload'})
     //         }
@@ -49,7 +51,12 @@ module.exports = function(express) {
     //                 res.status(400).json({'error':err})
     //             } else {
     //                 console.info('Found the question')
-    //                 res.status(200).json(question)
+    //             }
+    //
+    //             for(var j = 0 ; j < question.answers.array.length; j++ ){
+    //                 if (question.answers[j]._id == req.params.answerId) {
+    //                     question.answers[j].isBest = true
+    //                 }
     //             }
     //
     //             //question.answers.push(req.body)
@@ -58,7 +65,7 @@ module.exports = function(express) {
     //                     console.error(err)
     //                     res.status(400).json({'error':err})
     //                 } else {
-    //                     console.info("Answer added for the user")
+    //                     console.info("Answer added for the question")
     //                     res.status(200).json(savedAnswer)
     //                 }
     //             })

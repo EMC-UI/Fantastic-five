@@ -78,20 +78,14 @@ module.exports = function (express) {
       }     
     });
   })
-
-// exports.getByName = function(req, res) {
-//     User.findOne({userName: req.params.userName}, function(error, user) {
-//     	res.send(user);        
-// });
-// }
-
-// first locates a user by id, then locates the questions by user id.
-exports.getUserQuestsById = (function(req, res) {
-    User.findOne({_id: req.params._id}, function(error, user) {
-        var questions = Question.find({user: user._id}, function(error, questions) {
-          res.status(200).send([{user: user, questions: questions}]);
-        });
+  
+  router.route('/:_id/questions')
+  .get(function (req, res) {
+    User.findOne({_id: req.params._id}, '-password', function (error, user) {
+      Question.find({userId: user._id}, function (error, questions) {
+        res.status(200).json([{user: user, questions: questions}]);
+      });
     })
-});
+  })
   return router
 }
