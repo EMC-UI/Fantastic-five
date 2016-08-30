@@ -37,6 +37,8 @@ module.exports = function (express) {
           }
           Question.find(query)
               .sort({createdTimeStamp: -1})
+              .populate('userId', '-password')
+              .populate('answers.userId', '-password')
               .exec(function (err, questions) {
             res.status(200).json(questions);
           })
@@ -48,9 +50,9 @@ module.exports = function (express) {
             console.log('Getting question by id: ', req.params._id)
             Question
                 .findOne({_id: req.params._id})
-                .populate('userId')
-                .populate('answers.userId')
-                .exec (function (err, questions) {
+                .populate('userId', '-password')
+                .populate('answers.userId', '-password')
+                .exec(function (err, questions) {
                 res.status(200).json(questions);
             })
         })
