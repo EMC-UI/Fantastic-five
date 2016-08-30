@@ -1,11 +1,11 @@
 <div ng-controller="askQuestionCtrl">
-    <h1>EMC Ping - Answers your questions!</h1>
+    <h2>EMC Ping - Get your questions answered! </h2>
     <form>
-        Ask a question <br> <br>
+        <h3>Ask a question </h3><br> <br>
         Title <input type="text" ng-model="formData.title" required><br><br>
         Description <textarea type="text" ng-model="formData.content" required></textarea><br><br>
         Tags <input type="text" ng-model="formData.tags" ng-list required><br><br>
-        <button name="Submit" ng-click="submit()">Submit</button><br><br>
+        <button class='btn btn-default' name="Submit" ng-click="submit()">Submit</button><br><br>
         <span ng-bind="message"></span >
     </form>
 </div>
