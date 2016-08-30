@@ -14,7 +14,7 @@ var userSchema = mongoose.Schema({
   isAdmin: Boolean
 });
 
-var Users = mongoose.model('Users1', userSchema);
+var Users = mongoose.model('Users', userSchema);
 
 // make this available to our users in our Node applications
 module.exports = Users;
