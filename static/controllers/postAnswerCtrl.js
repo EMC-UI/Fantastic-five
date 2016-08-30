@@ -39,11 +39,9 @@ emcPingApp.controller("postAnswerCtrl", function($scope, $location, loginService
 
     $scope.postAnswer = function() {
 
-        $scope.answerFormData["token"] = loginService.getToken();
-
         var $request = $scope.generateRequest(   "POST",
             "/questions/" + questionService.getQuestion()._id + "/answers",
-            {'Content-Type': 'application/json'},
+            {'Content-Type': 'application/json', 'token': loginService.getToken()},
             $scope.answerFormData
         );
 
