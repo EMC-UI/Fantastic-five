@@ -1,6 +1,7 @@
 .tags--list {
   list-style: none;
   text-align: left;
+  position: absolute;
 }
 .tags--title {
   text-align: left;
