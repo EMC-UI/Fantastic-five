@@ -13,7 +13,7 @@ module.exports = function(express) {
   .post(function (req, res) {
     console.log('body: ', req.body)
     if (!req.user) {
-      console.log('authenticated request')
+      return res.status(401).json({error: 'unauthorized'})
     }
     if (!req.body) {
       return res.status(400).json({'error':'empty payload'})

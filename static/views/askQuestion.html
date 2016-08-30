@@ -1,11 +1,21 @@
 <div ng-controller="askQuestionCtrl">
-    <h2>EMC Ping - Get your questions answered! </h2>
     <form>
+       <div class='login'>
         <h3>Ask a question </h3><br> <br>
-        Title <input type="text" ng-model="formData.title" required><br><br>
-        Description <textarea type="text" ng-model="formData.content" required></textarea><br><br>
-        Tags <input type="text" ng-model="formData.tags" ng-list required><br><br>
+        <div class='form-group'>
+          <label class='control-label'>Title</label>
+          <input class='form-control' type="text" ng-model="formData.title" required>
+        </div>
+        <div class='form-group'>
+          <label class='control-label'>Description</label> 
+          <textarea class='form-control' type="text" ng-model="formData.content" required></textarea>
+        </div>
+        <div class='form-group'>
+          <label class='control-label'>Tags</label>
+          <input class='form-control' type="text" ng-model="formData.tags" ng-list required>
+        </div>
         <button class='btn btn-default' name="Submit" ng-click="submit()">Submit</button><br><br>
         <span ng-bind="message"></span >
+       </div>
     </form>
 </div>
