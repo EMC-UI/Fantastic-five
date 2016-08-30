@@ -45,7 +45,11 @@ module.exports = function (express) {
         router.route('/:_id')
         .get(function (req, res) {
             console.log('Getting question by id: ', req.params._id)
-            Question.findOne({_id: req.params._id}, function (err, questions) {
+            Question
+                .findOne({_id: req.params._id})
+                .populate('userId')
+                .populate('answers.userId')
+                .exec (function (err, questions) {
                 res.status(200).json(questions);
             })
         })
