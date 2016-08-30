@@ -1,15 +1,17 @@
 /**
  * Created by narrah on 8/29/16.
  */
-emcPingApp.controller('searchQuestionCtrl', function($scope, loginService,questionService, $rootScope, $http){
+emcPingApp.controller('searchQuestionCtrl', function($scope, $location, loginService,questionService,searchService, $rootScope, $http){
     $scope.submit = function(){
         console.log($scope.formData);
         $http.get('http://128.222.159.134:3000/api/questions',{params:{"title": $scope.formData.title}})
             .then(function(response){
                     console.log("Question Searched Successfully");
                     $scope.message = "Question Searched Successfully";
+                    // $scope.searchResults=response.data;
 
-                    $scope.searchResults=response.data;
+                    searchService.setsearchResults(response.data);
+                    $location.path('/searchQuestion');
                 },
                 function(response){
                     console.log("Question could not be searched");
@@ -20,6 +22,11 @@ emcPingApp.controller('searchQuestionCtrl', function($scope, loginService,questi
     $scope.saveQuestion = function(question){
         questionService.setQuestion(question);
         console.log(questionService.getQuestion());
+    }
+
+    $scope.getSearchResults = function(){
+        $scope.searchResults= searchService.getsearchResults();
+        console.log(searchService.getsearchResults());
     }
 
 });
