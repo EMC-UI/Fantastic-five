@@ -1,4 +1,4 @@
-emcPingApp.controller("loginCtrl", function($scope, $http){
+emcPingApp.controller("loginCtrl", function($scope, $location, loginService, $rootScope, $window, $http){
 
 
     $scope.status = "";
@@ -24,12 +24,15 @@ emcPingApp.controller("loginCtrl", function($scope, $http){
         $http($request).then(
             //Success callback
             function(response){
-                $scope.result = angular.toJson(response.data, true);
+                $scope.result = "Login Successful!!!";
+                loginService.setToken(response.data.token);
             },
             // Error callback
             function(response){
-                $scope.result = angular.toJson(response.data, true);
+                $scope.result = "Login Failed!!! Invalid username or the password";
             });
+        //loginService.setToken("testing token");
+        //$location.url("/signup");
     };
 
 });

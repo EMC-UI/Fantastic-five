@@ -2,17 +2,21 @@
 <html lang="en">
 <head>
     <title>EMC ping</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    <script src="app/app.js" ></script>
-    <script src="indexCtrl.js" ></script>
-
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
+    <script src="app.js" ></script>
+    <script src="routes/routeConfig.js" ></script>
+    <script src="controllers/loginCtrl.js"></script>
+    <script src="controllers/signupCtrl.js"></script>
+    <script src="services/loginService.js" ></script>
 </head>
 <body ng-app="emcping">
-    <form name="indexForm" ng-controller="indexCtrl">
-        <div>
-            <input type="button" value="Login" ng-click="login()">
-            <input type="button" value="SignUp" ng-click="register()">
-        </div>
-    </form>
+
+    <div ng-view></div>
+    <!--<pre>$location.path() = {{$location.path()}}</pre>-->
+    <!--<pre>$route.current.templateUrl = {{$route.current.templateUrl}}</pre>-->
+    <!--<pre>$route.current.params = {{$route.current.params}}</pre>-->
+    <!--<pre>$route.current.scope.name = {{$route.current.scope.name}}</pre>-->
+    <!--<pre>$routeParams = {{$routeParams}}</pre>-->
 </body>
 </html>
