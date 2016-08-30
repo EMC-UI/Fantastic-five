@@ -1,6 +1,5 @@
 
 var Question = require('../../mongo-models/questions');
-
 module.exports = function (express) {
     var router = express.Router()
     router.use(require('./answers')(express))
