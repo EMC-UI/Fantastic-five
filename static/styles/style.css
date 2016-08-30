@@ -23,3 +23,6 @@
 .navbar-brand img{
   max-height: 1.5em;
 }
+.search--input {
+  max-width: 500px;
+}
