@@ -6,25 +6,26 @@ module.exports = function (express) {
     router.use(require('./answers')(express))
     // POST /api/questions
     router.route('/')
-        .post(function (req, res) {
-            console.log('body: ', req.body)
-            if (req.user) {
-                console.log('authenticated request')
+      .post(function (req, res) {
+        console.log('body: ', req.body)
+        if (!req.user) {
+          return res.status(401).json({error: 'unauthorized'})
+        }
+        if (!req.body) {
+          return res.status(400).json({'error':'empty payload'})
+        }
+        req.body.userId = req.user._id
+        var newQ = new Question(req.body)
+        newQ.save(function (err, savedQuestion) {
+            if(err) {
+                console.error(err)
+                res.status(400).json({'error':err})
+            } else {
+                console.info("Question added for the user")
+                res.status(200).json(savedQuestion)
             }
-            if(!req.body) {
-                return res.status(400).json({'error':'empty payload'})
-            }
-            var newQ = new Question(req.body)
-            newQ.save(function (err, savedQuestion) {
-                if(err) {
-                    console.error(err)
-                    res.status(400).json({'error':err})
-                } else {
-                    console.info("Question added for the user")
-                    res.status(200).json(savedQuestion)
-                }
-            })
         })
+      })
 
         // GET (SEARCH) /api/questions
         router.route('/')
