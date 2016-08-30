@@ -1,6 +1,5 @@
 
 var Question = require('../../mongo-models/questions');
-var Tag = require('../../mongo-models/tag')
 module.exports = function (express) {
     var router = express.Router()
     router.use(require('./answers')(express))
@@ -15,19 +14,6 @@ module.exports = function (express) {
           return res.status(400).json({'error':'empty payload'})
         }
         req.body.userId = req.user._id
-        var tags = req.body.tags
-        var tagArray = []
-        if (tags) {
-          for (var i=0; i< tags.length; i++) {
-            var myTag = new Tag({
-              content: tags[i]
-            })
-            myTag.save(function (err, tag) {
-              
-            })
-          }
-        }
-        req.body.tags = tagArray
         var newQ = new Question(req.body)
         newQ.save(function (err, savedQuestion) {
             if(err) {
