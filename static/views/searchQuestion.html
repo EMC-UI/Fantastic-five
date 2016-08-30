@@ -1,0 +1,15 @@
+<div ng-controller="searchQuestionCtrl">
+    <h1>EMC Ping - Answers your questions!</h1>
+    <form>
+        Search a question <br> <br>
+        Search <input type="text" ng-model="formData.title" required><br><br>
+        <button name="Submit" ng-click="submit()">Submit</button><br><br>
+        <span ng-bind="message"></span > <br>
+
+        <div ng-repeat="x in searchResults">
+            <a href="" ng-click="saveQuestion(x)">{{x.title}}</a><br>
+            Description : {{x.content}}<br><br>
+            <!--<a href="">{{x.title}}</a><br>-->
+        </div>
+    </form>
+</div>
