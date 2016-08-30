@@ -15,7 +15,7 @@ emcPingApp.controller("pingCtrl", function ($scope, $http, $routeParams) {
     };
 
     $scope.getQuestions = function(){
-        var $request = $scope.generateRequest(   "GET",
+        var $request = $scope.generateRequest("GET",
             "/tags/"+$scope.tagName,
             {'Content-Type': 'application/json'}
         );
@@ -32,6 +32,6 @@ emcPingApp.controller("pingCtrl", function ($scope, $http, $routeParams) {
             });
     }
 
-    $scope.getQuestions();
+    //$scope.getQuestions();
 
 });

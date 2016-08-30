@@ -4,13 +4,16 @@
 
     <!-- Content -->
     <p ng-model="questionContent">{{questionContent}}</p>
+    <p ng-model="questionUser">{{questionUser}}</p>
     <hr>
+
     <p></p>
 
     <!-- all answers till now -->
     <h2>Answers:</h2>
     <div ng-repeat="answer in answersList" >
         <p>{{answer.content}}</p>
+        <p>By User: {{answer.userId}}</p>
     </div>
     <p></p>
 </div>
