@@ -1,4 +1,4 @@
-emcPingApp.controller("loginCtrl", function($scope, $location, loginService, $rootScope, $window, $http){
+emcPingApp.controller("loginCtrl", function($scope, $location,$route, searchService,loginService, $rootScope, $window, $http){
 
 
     $scope.status = "";
@@ -26,6 +26,8 @@ emcPingApp.controller("loginCtrl", function($scope, $location, loginService, $ro
             function(response){
                 $scope.result = "Login Successful!!!";
                 loginService.setToken(response.data.token);
+
+                $scope.recentQuest();
             },
             // Error callback
             function(response){
@@ -34,5 +36,24 @@ emcPingApp.controller("loginCtrl", function($scope, $location, loginService, $ro
         //loginService.setToken("testing token");
         //$location.url("/signup");
     };
+
+    $scope.logout = function() {
+        loginService.setToken("");
+    };
+
+    $scope.recentQuest = function(){
+        $http.get('http://128.222.159.134:3000/api/questions')
+            .then(function(response){
+                    console.log("Got recent questions");
+                    searchService.setsearchResults(response.data);
+                    $location.path('/searchQuestion');
+                    $route.reload();
+                },
+                function(response){
+                    console.log("Could not get recent questions");
+                    $scope.message = response.data.error;
+                });
+    };
+
 
 });
