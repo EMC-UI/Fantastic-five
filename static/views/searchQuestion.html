@@ -4,8 +4,8 @@
         <!--Search <input type="text" ng-model="formData.title" required><br><br>-->
         <!--<button name="Submit" ng-click="submit()">Submit</button><br><br>-->
         <!--<span ng-bind="message"></span > <br>-->
-        <h2>Search Question results</h2>
-        <hr>
+        <h3>Search Question results</h3>
+        <p></p>
         <div ng-repeat="x in searchResults">
             <a href="" ng-click="saveQuestion(x)">{{x.title}}</a><br>
             Description : {{x.content}}<br><br>
