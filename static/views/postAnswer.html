@@ -18,7 +18,7 @@
 <form name="answerForm" ng-controller="postAnswerCtrl">
     <div>
         Post Your Answer here:
-        <p>Content: <input type="text" ng-model="answerFormData"></p>
+        <p>Content: <input type="text" ng-model="answerFormData.content"></p>
         <input type="submit" value="Submit" ng-click="postAnswer()">
         <p ng-model="result">{{result}}</p>
     </div>
