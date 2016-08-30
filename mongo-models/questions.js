@@ -6,7 +6,7 @@
  * @author Administrator
  */
 var mongoose = require('mongoose');
-
+var tag = require('./tag')
 var answerSchema = mongoose.Schema({
   content: { type: String, required: true, index: { text: true }},
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'Users', required: true },
@@ -19,7 +19,7 @@ var questionSchema = mongoose.Schema({
 	title: { type: String, required: true, trim: true, index: { unique: false, text: true }},
   content: { type: String, required: true},
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'Users', required: true },
-  tags: [String],
+  tags: [tag],
   answers: [answerSchema],
   createdTimeStamp: {type: Date, default:Date.now},
 	modifiedTimeStamp: {type: Date, default:Date.now},

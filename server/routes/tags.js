@@ -1,5 +1,5 @@
 
-var Question = require('../../mongo-models/questions');
+var Tags = require('../../mongo-models/tag');
 
 module.exports = function (express) {
     var router = express.Router()
@@ -14,7 +14,7 @@ module.exports = function (express) {
       if (!tag) {
         query = ''
       }
-      Question.find(query, 'tags', function (err, questions) {
+      Tags.find(query, 'tags', function (err, questions) {
         res.status(200).json(questions);
       })
     })
@@ -22,8 +22,8 @@ module.exports = function (express) {
     // GET by Id /api/questions/{id}
     router.route('/:tag')
     .get(function (req, res) {
-      console.log('Getting by tag name: ', req.params._id)
-      Question.findOne({_id: req.params._id}, function (err, questions) {
+      console.log('Getting by tag name: ', req.params.tag)
+      Tags.findOne({content: req.params.tag}, function (err, questions) {
           res.status(200).json(questions);
       })
     })
