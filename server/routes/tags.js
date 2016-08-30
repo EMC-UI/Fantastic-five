@@ -14,7 +14,7 @@ module.exports = function (express) {
       if (!tag) {
         query = ''
       }
-      Question.find(query, 'tags', function (err, questions) {
+      Question.find(query, function (err, questions) {
         res.status(200).json(questions);
       })
     })
