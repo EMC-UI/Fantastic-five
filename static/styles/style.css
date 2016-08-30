@@ -13,3 +13,16 @@
 .pageContent {
   text-align: center;
   }
+.login {
+    text-align: left;
+    vertical-align: middle;
+    max-width: 300px;
+    margin: 0 auto;
+    margin-top: 2.5em;
+}
+.navbar-brand img{
+  max-height: 1.5em;
+}
+.search--input {
+  max-width: 500px;
+}

@@ -10,10 +10,13 @@
     <p></p>
 
     <!-- all answers till now -->
-    <h2>Answers:</h2>
+    <h2><mark>Answers:</mark></h2>
     <div ng-repeat="answer in answersList" >
+        <pre class='answer'>
         <p>{{answer.content}}</p>
-        <p>By User: {{answer.userId}}</p>
+
+        <p>By User: {{answer.userId.username}}</p>
+        </pre>
     </div>
     <p></p>
 </div>
@@ -21,8 +24,13 @@
 <form name="answerForm" ng-controller="postAnswerCtrl">
     <div>
         Post Your Answer here:
-        <p>Content: <input type="text" ng-model="answerFormData.content"></p>
-        <input type="submit" value="Submit" ng-click="postAnswer()">
-        <p ng-model="result">{{result}}</p>
+        <div class='login'>
+          <div class='form-group'>
+            <label class='control-label'>Answer:</label>
+            <input class='form-control' type="text" ng-model="answerFormData.content">
+            <input class='btn btn-default' type="submit" value="Submit" ng-click="postAnswer()">
+          </div>
+          <p ng-model="result">{{result}}</p>
+        </div>
     </div>
 </form>

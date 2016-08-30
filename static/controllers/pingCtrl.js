@@ -1,6 +1,6 @@
-emcPingApp.controller("pingCtrl", function ($scope, $http) {
+angular.module('emcping').controller("pingCtrl", function ($scope, $http) {
 
-    $scope.tags = ["node","done"];
+    $scope.tags = [];
 
     $scope.ip = "128.222.159.134";
     $scope.port = 3000;
@@ -24,7 +24,16 @@ emcPingApp.controller("pingCtrl", function ($scope, $http) {
             //Success callback
             function(response){
                 //$scope.tags = response.data.tags;
+                //console.log(tags);
                 console.log(response.data);
+                for(i=0; i<response.data.length; i++){
+                    //console.log(response.data[i]);
+                    for(j=0; j<response.data[i].tags.length; j++){
+                        if($scope.tags.indexOf(response.data[i].tags[j]) == -1)
+                            $scope.tags.push(response.data[i].tags[j]);
+                    }
+                }
+                console.log($scope.tags);
             },
             // Error callback
             function(response){

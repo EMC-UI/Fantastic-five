@@ -22,7 +22,7 @@ emcPingApp.controller("postAnswerCtrl", function($scope, $location, loginService
                     questionService.setQuestion(response.data);
                     console.log(questionService.getQuestion());
 
-                    $scope.questionUser = questionService.getQuestion().userId;
+                    $scope.questionUser = questionService.getQuestion().userId.username;
                     $scope.questionTitle = questionService.getQuestion().title;
                     $scope.questionContent = questionService.getQuestion().content;
                     $scope.answersList = questionService.getQuestion().answers;
@@ -32,7 +32,7 @@ emcPingApp.controller("postAnswerCtrl", function($scope, $location, loginService
                     $scope.message = response.data.error;
                 });
     } else {
-        $scope.questionUser = questionService.getQuestion().userId;
+        $scope.questionUser = questionService.getQuestion().userId.username;
         $scope.questionTitle = questionService.getQuestion().title;
         $scope.questionContent = questionService.getQuestion().content;
         $scope.answersList = questionService.getQuestion().answers;
@@ -56,7 +56,7 @@ emcPingApp.controller("postAnswerCtrl", function($scope, $location, loginService
             },
             // Error callback
             function(response){
-                $scope.result = "Failed to post the answer. Please check content.";
+                $scope.result = "Failed to post the answer. Please login and try again.";
             });
 
     };
