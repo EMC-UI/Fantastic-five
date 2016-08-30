@@ -7,7 +7,7 @@ emcPingApp.controller('searchResultsCtrl', function($scope, $location,$route, lo
         console.log(questionService.getQuestion());
         $location.path('/postAnswer/:question.id');
         $route.reload();
-        
+
     }
 
     $scope.getSearchResults = function(){

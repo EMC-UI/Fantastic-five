@@ -10,10 +10,13 @@
     <p></p>
 
     <!-- all answers till now -->
-    <h2>Answers:</h2>
+    <h2><mark>Answers:</mark></h2>
     <div ng-repeat="answer in answersList" >
+        <pre class='answer'>
         <p>{{answer.content}}</p>
+
         <p>By User: {{answer.username}}</p>
+        </pre>
     </div>
     <p></p>
 </div>
