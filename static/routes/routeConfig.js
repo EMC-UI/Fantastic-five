@@ -1,4 +1,4 @@
-emcPingApp.config(function($routeProvider) {
+emcPingApp.config(function($routeProvider, $routeParams) {
     $routeProvider
         // .when("/", {
         //     templateUrl : "index.html"
@@ -20,9 +20,10 @@ emcPingApp.config(function($routeProvider) {
             templateUrl : "views/searchQuestion.html",
             controller: 'searchQuestionCtrl'
         })
-        .when("/showQuestion", {
-            templateUrl : "views/showQuestion.html",
-            controller: 'showQuestionCtrl'
+
+        .when("/postAnswer/:questionId", {
+            templateUrl : "views/postAnswer.html",
+            controller: 'postAnswerCtrl'
         })
 
         .otherwise({
