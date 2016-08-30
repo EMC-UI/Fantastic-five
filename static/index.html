@@ -78,14 +78,14 @@
 
             <div class="pageSearch" ng-controller="searchQuestionCtrl">
 
+              <form ng-submit="submit()">
                 <div class="input-group search--input">
-                    <form ng-submit="submit()">
                         <input type="text" class="form-control" placeholder="Search for..." ng-model="formData.title" required>
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="button" ng-click="submit()">Go!</button>
                         </span>
-                    </form>
                 </div>
+              </form>
             </div>
             <!--<div class="pageContent">-->
                 <!--<h2>Questions</h2>-->
