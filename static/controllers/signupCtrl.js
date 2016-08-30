@@ -1,17 +1,11 @@
-/**
- * Created by narrah on 8/29/16.
- */
-var userDetailsApp = angular.module('emcping', []);
-
-userDetailsApp.controller('signupController', function($scope, $http){
+emcPingApp.controller('signupCtrl', function($scope, loginService, $rootScope, $http){
 
     $scope.areStringsEqual = function(password, confirmpassword){
         if(password==confirmpassword){
-            console.log("true");
+            console.log(loginService.getToken());
             return true;
         }
         else{
-            console.log("false");
             return false;
         }
     };
@@ -21,6 +15,7 @@ userDetailsApp.controller('signupController', function($scope, $http){
             .then(function(data){
                 console.log("Successfull signup");
                 $scope.message = "Signup successful";
+                loginService.setToken(data.data.token);
             },
         function(response){
             console.log("Signup failed");

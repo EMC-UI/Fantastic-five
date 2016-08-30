@@ -2,20 +2,21 @@
 <html lang="en">
 <head>
     <title>EMC ping</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    <script src="/app/app.js" ></script>
-    <script src="/indexCtrl.js" ></script>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="/styles/bootstrap.min.css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
+    <script src="app.js" ></script>
+    <script src="routes/routeConfig.js" ></script>
+    <script src="controllers/loginCtrl.js"></script>
+    <script src="controllers/signupCtrl.js"></script>
+    <script src="services/loginService.js" ></script>
 </head>
 <body ng-app="emcping">
-  
-    <form name="indexForm" ng-controller="indexCtrl">
-        <div>
-            <input class='btn btn-default' type="button" value="Login" ng-click="login()">
-            <input class='btn btn-default' type="button" value="SignUp" ng-click="register()">
-        </div>
-    </form>
+
+    <div ng-view></div>
+    <!--<pre>$location.path() = {{$location.path()}}</pre>-->
+    <!--<pre>$route.current.templateUrl = {{$route.current.templateUrl}}</pre>-->
+    <!--<pre>$route.current.params = {{$route.current.params}}</pre>-->
+    <!--<pre>$route.current.scope.name = {{$route.current.scope.name}}</pre>-->
+    <!--<pre>$routeParams = {{$routeParams}}</pre>-->
 </body>
 </html>
