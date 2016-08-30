@@ -35,7 +35,9 @@ module.exports = function (express) {
           if (!titleParam) {
             query = ''
           }
-          Question.find(query, function (err, questions) {
+          Question.find(query)
+              .sort({createdTimeStamp: -1})
+              .exec(function (err, questions) {
             res.status(200).json(questions);
           })
         })
