@@ -29,11 +29,15 @@ module.exports = function (express) {
         // GET (SEARCH) /api/questions
         router.route('/')
         .get(function (req, res) {
-            var titleParam = req.query.title
-            console.log('search text: ', titleParam)
-            Question.find({title : titleParam}, function(err, questions) {
-                res.status(200).json(questions);
-            })
+          var titleParam = req.query.title
+          console.log('search text: ', titleParam)
+          var query = {$text: {$search: titleParam} }
+          if (!titleParam) {
+            query = ''
+          }
+          Question.find(query, function (err, questions) {
+            res.status(200).json(questions);
+          })
         })
 
         // GET by Id /api/questions/{id}
