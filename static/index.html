@@ -36,7 +36,7 @@
         <div class="container-fluid">
             <div class="navbar-header" bgcolor="#E6E6FA">
                 <a class="navbar-brand" href="#">
-                <img alt="Brand" src="/images/PING-web-1.png" height="40" width="200">
+                <img alt="Brand" src="images/PING-web-1.png" height="40" width="200">
             </a>
             </div>
             <!-- Logo
@@ -64,16 +64,13 @@
     <div>
         <div class="pageHeader">
 
-            <div class="pageLeftMenu">
+            <div class="pageLeftMenu" ng-controller="pingCtrl">
                 <h2 class='tags--title'>Tags</h2>
                 <nav>
                     <ul class='tags--list'>
-                        <li><a href="#">AAA</a></li>
-                        <li><a href="#">System Manager</a></li>
-                        <li><a href="#">Secrets</a></li>
-                        <li><a href="#">Secretsmgr</a></li>
-                        <li><a href="#">license</a></li>
-                        <li><a href="#">sysmgr</a></li>
+                        <li ng-repeat="tag in tags">
+                            <a href="#tags/tagName">{{tag}}</a>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -81,15 +78,15 @@
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search for..." ng-model="formData.title" required>
                     <span class="input-group-btn">
-            <button class="btn btn-default" type="button" ng-click="submit()">Go!</button>
-          </span>
+                        <button class="btn btn-default" type="button" ng-click="submit()">Go!</button>
+                    </span>
                 </div>
             </div>
             <div class="pageContent">
                 <h2>Questions</h2>
             </div>
         </div>
-        </div>
+    </div>
 
     <div ng-view></div>
 </body>
