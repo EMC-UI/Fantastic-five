@@ -6,7 +6,7 @@
         <!--<span ng-bind="message"></span > <br>-->
         <span ng-show="searchResults.length==0">No results found</span><br><br>
         <p></p>
-        <div ng-repeat="x in searchResults">
+        <div ng-repeat="x in searchResults" class='question'>
             <a href="" ng-click="saveQuestion(x)">{{x.title}}</a><br>
             Description : {{x.content}}<br><br>
             <!--<a href="">{{x.title}}</a><br>-->

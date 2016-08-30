@@ -27,3 +27,11 @@
 .search--input {
   max-width: 500px;
 }
+.label-warning {
+  margin: .25em;
+}
+.question {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
