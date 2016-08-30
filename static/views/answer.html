@@ -1,12 +1,20 @@
 <div>
-    <p>
-        <!-- Question and the previous answers here -->
-    </p>
+    <!-- Question title -->
+    <h3 ng-model="questionTitle">{{questionTitle}}</h3>
+
+    <!-- Content -->
+    <p ng-model="questionContent">{{questionContent}}</p>
+    <hr>
+    <p></p>
+    <!-- all answers till now -->
+    <h2>Answers:</h2>
+    <p ng-model="answersList">{{answersList}}</p>
 </div>
+
 <form name="answerForm" ng-controller="answerCtrl">
     <div>
         Post Your Answer here:
-        <p>Content: <input type="text" ng-model="answerFormData."></p>
+        <p>Content: <input type="text" ng-model="answerFormData"></p>
         <input type="submit" value="Submit" ng-click="postAnswer()">
         <p ng-model="result">{{result}}</p>
     </div>

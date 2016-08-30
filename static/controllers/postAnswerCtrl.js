@@ -14,10 +14,13 @@ emcPingApp.controller("postAnswerCtrl", function($scope, $location, loginService
         };
     };
 
+    $scope.questionTitle = "Hello Neha";
+    $scope.questionContent = "I dont know";
+    $scope.answersList = "{blah, blah, blah}";
 
     $scope.postAnswer = function() {
         var $request = $scope.generateRequest(   "POST",
-            "/questions/" + $rootScope.id + " /answers",
+            "/questions/" + 138712871 + " /answers", <!-- $rootScope.id -->
             {'Content-Type': 'application/json'},
             $scope.answerFormData
         );
