@@ -1,4 +1,4 @@
-emcPingApp.controller('signupCtrl', function($scope, loginService, $rootScope, $http){
+emcPingApp.controller('signupCtrl', function($scope,$location,$route,searchService, loginService, $rootScope, $http){
 
     $scope.areStringsEqual = function(password, confirmpassword){
         if(password==confirmpassword){
@@ -16,11 +16,26 @@ emcPingApp.controller('signupCtrl', function($scope, loginService, $rootScope, $
                 console.log("Successful signup");
                 $scope.message = "Signup successful";
                 loginService.setToken(data.data.token);
+                    $scope.recentQuest();
             },
         function(response){
             console.log("Signup failed");
             $scope.message = "Username already exists. Use a different username.";
         });
+    };
+
+    $scope.recentQuest = function(){
+        $http.get('http://128.222.159.134:3000/api/questions')
+            .then(function(response){
+                    console.log("Got recent questions");
+                    searchService.setsearchResults(response.data);
+                    $location.path('/searchQuestion');
+                    $route.reload();
+                },
+                function(response){
+                    console.log("Could not get recent questions");
+                    $scope.message = response.data.error;
+                });
     };
 
 });
