@@ -11,30 +11,30 @@ module.exports = function(express) {
     // /api/questions/<questionId/answers
     router.route('/:questionId/answers/')
         .post(function (req, res) {
-            console.log('body: ', req.body)
-            if (req.user) {
-                console.log('authenticated request')
+          console.log('body: ', req.body)
+          if (req.user) {
+            console.log('authenticated request')
+          }
+          if (!req.body) {
+            return res.status(400).json({'error':'empty payload'})
+          }
+          Question.findOne({_id: req.params.questionId}, function (err, question) {
+            if (err) {
+              res.status(400).json({'error':err})
+            } else {
+              console.info('Found the question')
             }
-            if(!req.body) {
-                return res.status(400).json({'error':'empty payload'})
-            }
-            Question.findOne({_id: req.params.questionId}, function (err, question) {
-                if (err) {
-                    res.status(400).json({'error':err})
-                } else {
-                    console.info('Found the question')
-                }
-                question.answers.push(req.body) // answer obj doesnt have an Id
-                question.save(function (err, savedAnswer) {
-                    if(err) {
-                        console.error(err)
-                        res.status(400).json({'error':err})
-                    } else {
-                        console.info("Answer added for the question")
-                        res.status(200).json(savedAnswer)
-                    }
-                })
-            });
+            question.answers.push(req.body) // answer obj doesnt have an Id
+            question.save(function (err, savedAnswer) {
+              if (err) {
+                  console.error(err)
+                  res.status(400).json({'error':err})
+              } else {
+                  console.info("Answer added for the question")
+                  res.status(200).json(savedAnswer)
+              }
+            })
+          });
         })
 
     // PUT answer (Pick the best one)
