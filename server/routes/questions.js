@@ -8,6 +8,9 @@ module.exports = function (express) {
     router.route('/')
         .post(function (req, res) {
             console.log('body: ', req.body)
+            if (req.user) {
+                console.log('authenticated request')
+            }
             if(!req.body) {
                 return res.status(400).json({'error':'empty payload'})
             }
