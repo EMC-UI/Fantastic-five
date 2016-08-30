@@ -1,4 +1,5 @@
-emcPingApp.controller("postAnswerCtrl", function($scope, $location, loginService, $rootScope, $window, $http){
+emcPingApp.controller("postAnswerCtrl", function($scope, $location, loginService, questionService, $rootScope, $window,
+                                                 $http, $routeParams){
 
 
     $scope.status = "";
@@ -14,13 +15,25 @@ emcPingApp.controller("postAnswerCtrl", function($scope, $location, loginService
         };
     };
 
-    $scope.questionTitle = "Hello Neha";
-    $scope.questionContent = "I dont know";
-    $scope.answersList = "{blah, blah, blah}";
+    if(!questionService.getQuestion()) {
+        $http.get('http://128.222.159.134:3000/api/questions' + $routeParams.questionId)
+            .then(function(response){
+                    questionService.setQuestion(response.data);
+                    console.log(questionService.getQuestion());
+                },
+                function(response){
+                    console.log("Question could not be searched");
+                    $scope.message = response.data.error;
+                });
+    };
+
+    $scope.questionTitle = questionService.getQuestion().title;
+    $scope.questionContent = questionService.getQuestion().content;
+    $scope.answersList = questionService.getQuestion().answers;
 
     $scope.postAnswer = function() {
         var $request = $scope.generateRequest(   "POST",
-            "/questions/" + 138712871 + " /answers", <!-- $rootScope.id -->
+            "/questions/" + questionService.getQuestion().id + " /answers",
             {'Content-Type': 'application/json'},
             $scope.answerFormData
         );
