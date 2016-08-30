@@ -16,7 +16,7 @@ var answerSchema = mongoose.Schema({
 });
 
 var questionSchema = mongoose.Schema({
-	title: { type: String, required: true, trim: true, index: { unique: true, text: true }},
+	title: { type: String, required: true, trim: true, index: { unique: false, text: true }},
   content: { type: String, required: true},
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'Users', required: true },
   tags: [String],
