@@ -35,7 +35,9 @@ module.exports = function (express) {
           if (!titleParam) {
             query = ''
           }
-          Question.find(query, function (err, questions) {
+          Question.find(query)
+              .sort({createdTimeStamp: -1})
+              .exec(function (err, questions) {
             res.status(200).json(questions);
           })
         })
@@ -44,7 +46,11 @@ module.exports = function (express) {
         router.route('/:_id')
         .get(function (req, res) {
             console.log('Getting question by id: ', req.params._id)
-            Question.findOne({_id: req.params._id}, function (err, questions) {
+            Question
+                .findOne({_id: req.params._id})
+                .populate('userId')
+                .populate('answers.userId')
+                .exec (function (err, questions) {
                 res.status(200).json(questions);
             })
         })

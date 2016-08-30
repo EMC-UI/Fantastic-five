@@ -11,8 +11,14 @@ emcPingApp.controller('askQuestionCtrl', function($scope, loginService, $rootSco
 
 
             console.log($scope.newformData);
-            $http.post('http://128.222.159.134:3000/api/questions', $scope.newformData, {header: {'token': loginService.getToken()}})
-                .then(function(response){
+            //$http.post('http://128.222.159.134:3000/api/questions', $scope.newformData, {header: {'token': loginService.getToken()}})
+
+            $http({
+                method: "POST",
+                url: "http://128.222.159.134:3000/api/questions",
+                headers: {'token': loginService.getToken()},
+                data: $scope.newformData
+            }).then(function(response){
                         console.log("Question Posted Successfully");
                         $scope.message = "Question Posted Successfully";
                     },
