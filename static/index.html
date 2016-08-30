@@ -15,8 +15,12 @@
     <script src="controllers/loginCtrl.js"></script>
     <script src="controllers/signupCtrl.js"></script>
     <script src="controllers/postAnswerCtrl.js"></script>
+    <script src="services/loginService.js" ></script>
+    <script src="services/questionService.js" ></script>
+    <script src="services/searchService.js" ></script>
     <script src="controllers/searchQuestionCtrl.js"></script>
     <script src="controllers/askQuestionCtrl.js"></script>
+    <script src="controllers/searchResultsCtrl.js"></script>
     <script src="controllers/pingCtrl.js"></script>
     <script src="controllers/tagCtrl.js"></script>
 
@@ -27,6 +31,62 @@
 
 </head>
 <body ng-app="emcping">
+    <link rel="stylesheet" href="styles/main.css">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+
+            <!-- Logo -->
+            <div class="navbar-header">
+                <a href="#" class="navbar-brand">EMC PING</a>
+            </div>
+
+            <!-- Menu Items -->
+            <div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Top Questions</a></li>
+                    <li><a href="#askQuestion">Ask a question</a></li>
+                    <li><a href="#">Top questions</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#login">Login</a></li>
+                    <li><a href="#signup">Sign up</a></li>
+                    <li><a href="#logout">Log out</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <div>
+        <div class="pageHeader">
+
+            <div class="pageLeftMenu">
+                <h2 class='tags--title'>Tags</h2>
+                <nav>
+                    <ul class='tags--list'>
+                        <li><a href="#">AAA</a></li>
+                        <li><a href="#">System Manager</a></li>
+                        <li><a href="#">Secrets</a></li>
+                        <li><a href="#">Secretsmgr</a></li>
+                        <li><a href="#">license</a></li>
+                        <li><a href="#">sysmgr</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="pageSearch" ng-controller="searchQuestionCtrl">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for..." ng-model="formData.title" required>
+                    <span class="input-group-btn">
+            <button class="btn btn-default" type="button" ng-click="submit()">Go!</button>
+          </span>
+                </div>
+            </div>
+            <div class="pageContent">
+                <h2>Questions</h2>
+            </div>
+        </div>
+        </div>
+
     <div ng-view></div>
 </body>
 </html>
