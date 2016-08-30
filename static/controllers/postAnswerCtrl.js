@@ -22,7 +22,7 @@ emcPingApp.controller("postAnswerCtrl", function($scope, $location, loginService
                     questionService.setQuestion(response.data);
                     console.log(questionService.getQuestion());
 
-                    $scope.questionUser = questionService.getQuestion().userId;
+                    $scope.questionUser = questionService.getQuestion().username;
                     $scope.questionTitle = questionService.getQuestion().title;
                     $scope.questionContent = questionService.getQuestion().content;
                     $scope.answersList = questionService.getQuestion().answers;
