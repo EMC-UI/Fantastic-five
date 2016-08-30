@@ -39,3 +39,9 @@
     /*height : 600px;*/
     width : 70%;
 }
+.answer {
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
