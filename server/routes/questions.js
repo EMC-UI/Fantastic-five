@@ -46,8 +46,6 @@ module.exports = function (express) {
             console.log('Getting question by id: ', req.params._id)
             Question
                 .findOne({_id: req.params._id})
-                .populate('userId')
-                .populate('answers.userId')
                 .exec (function (err, questions) {
                 res.status(200).json(questions);
             })
