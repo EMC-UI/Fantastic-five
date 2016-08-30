@@ -13,7 +13,7 @@ emcPingApp.controller('signupCtrl', function($scope, loginService, $rootScope, $
     $scope.submit = function(){
         $http.post('http://128.222.159.134:3000/api/users/signup', $scope.formData)
             .then(function(data){
-                console.log("Successfull signup");
+                console.log("Successful signup");
                 $scope.message = "Signup successful";
                 loginService.setToken(data.data.token);
             },
