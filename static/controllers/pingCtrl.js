@@ -15,7 +15,7 @@ emcPingApp.controller("pingCtrl", function ($scope, $http) {
     };
 
     $scope.getTags = function(){
-        var $request = $scope.generateRequest(   "GET",
+        var $request = $scope.generateRequest("GET",
             "/tags",
             {'Content-Type': 'application/json'}
         );
