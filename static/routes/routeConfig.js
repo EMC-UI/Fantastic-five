@@ -1,4 +1,4 @@
-emcPingApp.config(function($routeProvider, $routeParams) {
+emcPingApp.config(function($routeProvider) {
     $routeProvider
         // .when("/", {
         //     templateUrl : "index.html"
