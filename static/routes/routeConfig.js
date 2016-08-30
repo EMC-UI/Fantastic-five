@@ -25,7 +25,7 @@ emcPingApp.config(function($routeProvider) {
             templateUrl : "views/postAnswer.html",
             controller: 'postAnswerCtrl'
         })
-        .when("/tag/:tagName", {
+        .when("/tags/:tagName", {
             templateUrl : "views/tag.html",
             controller: "tagCtrl"
         })

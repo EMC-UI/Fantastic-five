@@ -6,7 +6,6 @@
  * @author Administrator
  */
 var mongoose = require('mongoose');
-
 var answerSchema = mongoose.Schema({
   content: { type: String, required: true, index: { text: true }},
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'Users', required: true },
