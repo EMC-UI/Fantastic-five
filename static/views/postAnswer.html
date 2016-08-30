@@ -6,15 +6,19 @@
     <p ng-model="questionContent">{{questionContent}}</p>
     <hr>
     <p></p>
+
     <!-- all answers till now -->
     <h2>Answers:</h2>
-    <p ng-model="answersList">{{answersList}}</p>
+    <div ng-repeat="answer in answersList" >
+        <p>{{answer.content}}</p>
+    </div>
+    <p></p>
 </div>
 
-<form name="answerForm" ng-controller="answerCtrl">
+<form name="answerForm" ng-controller="postAnswerCtrl">
     <div>
         Post Your Answer here:
-        <p>Content: <input type="text" ng-model="answerFormData"></p>
+        <p>Content: <input type="text" ng-model="answerFormData.content"></p>
         <input type="submit" value="Submit" ng-click="postAnswer()">
         <p ng-model="result">{{result}}</p>
     </div>

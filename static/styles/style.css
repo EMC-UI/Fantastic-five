@@ -1,0 +1,11 @@
+.tags--list {
+  list-style: none;
+  text-align: left;
+}
+.tags--title {
+  text-align: left;
+  margin-left: 1em;
+}
+.pageSearch {
+  margin-top: 21px;
+}
