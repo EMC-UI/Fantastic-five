@@ -4,7 +4,7 @@
 emcPingApp.controller('searchQuestionCtrl', function($scope, $location, $route,loginService,questionService,searchService, $rootScope, $http){
     $scope.submit = function(){
         console.log($scope.formData);
-        $http.get('http://128.222.159.134:3000/api/questions',{params:{"title": $scope.formData.title}})
+        $http.get('http://localhost:3000/api/questions',{params:{"title": $scope.formData.title}})
             .then(function(response){
                     console.log("Question Searched Successfully");
                     $scope.message = "Question Searched Successfully";
@@ -31,7 +31,7 @@ emcPingApp.controller('searchQuestionCtrl', function($scope, $location, $route,l
     }
 
     $scope.recentQuestions = function(){
-        $http.get('http://128.222.159.134:3000/api/questions')
+        $http.get('http://localhost:3000/api/questions')
             .then(function(response){
                     console.log("Got recent questions");
                     searchService.setsearchResults(response.data);

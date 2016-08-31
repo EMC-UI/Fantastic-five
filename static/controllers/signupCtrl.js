@@ -11,7 +11,7 @@ emcPingApp.controller('signupCtrl', function($scope,$location,$route,searchServi
     };
 
     $scope.submit = function(){
-        $http.post('http://128.222.159.134:3000/api/users/signup', $scope.formData)
+        $http.post('http://localhost:3000/api/users/signup', $scope.formData)
             .then(function(data){
                 console.log("Successful signup");
                 $scope.message = "Signup successful";
@@ -25,7 +25,7 @@ emcPingApp.controller('signupCtrl', function($scope,$location,$route,searchServi
     };
 
     $scope.recentQuest = function(){
-        $http.get('http://128.222.159.134:3000/api/questions')
+        $http.get('http://localhost:3000/api/questions')
             .then(function(response){
                     console.log("Got recent questions");
                     searchService.setsearchResults(response.data);

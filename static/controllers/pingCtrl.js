@@ -2,7 +2,7 @@ angular.module('emcping').controller("pingCtrl", function ($scope, $http) {
 
     $scope.tags = [];
 
-    $scope.ip = "128.222.159.134";
+    $scope.ip = "localhost";
     $scope.port = 3000;
 
     $scope.generateRequest = function($method, $path, $header, $data) {

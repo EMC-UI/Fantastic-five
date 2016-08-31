@@ -15,7 +15,7 @@ emcPingApp.controller('askQuestionCtrl', function($scope, loginService, $rootSco
 
             $http({
                 method: "POST",
-                url: "http://128.222.159.134:3000/api/questions",
+                url: "http://localhost:3000/api/questions",
                 headers: {'token': loginService.getToken()},
                 data: $scope.newformData
             }).then(function(response){

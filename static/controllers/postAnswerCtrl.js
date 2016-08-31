@@ -3,7 +3,7 @@ emcPingApp.controller("postAnswerCtrl", function($scope, $location, loginService
 
 
     $scope.status = "";
-    $scope.ip = "128.222.159.134";
+    $scope.ip = "localhost";
     $scope.port = 3000;
 
     $scope.generateRequest = function($method, $path, $header, $data) {
@@ -17,7 +17,7 @@ emcPingApp.controller("postAnswerCtrl", function($scope, $location, loginService
 
     // if we come here from a url directly and not by clicking a question
     if(!questionService.getQuestion()) {
-        $http.get('http://128.222.159.134:3000/api/questions/' + $routeParams.questionId)
+        $http.get('http://localhost:3000/api/questions/' + $routeParams.questionId)
             .then(function(response){
                     questionService.setQuestion(response.data);
                     console.log(questionService.getQuestion());

@@ -14,27 +14,25 @@
     <p></p>
 
     <!-- all answers till now -->
-    <h2><mark>Answers:</mark></h2>
+    <h3><mark>Answers</mark></h3>
     <div ng-repeat="answer in answersList" >
         <pre class='answer'>
         <p>{{answer.content}}</p>
 
-        <p style="color: #5bc0de">By User: {{answer.userId.username}}</p>
+        <span style="color: #5bc0de">By User: {{answer.userId.username}}</span>
         </pre>
     </div>
     <p></p>
 </div>
 
 <form name="answerForm" ng-controller="postAnswerCtrl">
-    <div>
-        Post Your Answer here:
         <div class='login'>
           <div class='form-group'>
-            <label class='control-label'>Answer:</label>
+            <label class='control-label'>Post Your Answer here:</label>
             <input class='form-control' type="text" ng-model="answerFormData.content">
+              <br>
             <input class='btn btn-default' type="submit" value="Submit" ng-click="postAnswer()">
           </div>
           <p ng-model="result">{{result}}</p>
         </div>
-    </div>
 </form>

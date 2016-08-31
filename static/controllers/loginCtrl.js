@@ -2,7 +2,7 @@ emcPingApp.controller("loginCtrl", function($scope, $location,$route, searchServ
 
 
     $scope.status = "";
-    $scope.ip = "128.222.159.134";
+    $scope.ip = "localhost";
     $scope.port = 3000;
 
     $scope.generateRequest = function($method, $path, $header, $data) {
@@ -42,7 +42,7 @@ emcPingApp.controller("loginCtrl", function($scope, $location,$route, searchServ
     };
 
     $scope.recentQuest = function(){
-        $http.get('http://128.222.159.134:3000/api/questions')
+        $http.get('http://localhost:3000/api/questions')
             .then(function(response){
                     console.log("Got recent questions");
                     searchService.setsearchResults(response.data);
