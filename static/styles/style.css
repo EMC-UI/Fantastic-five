@@ -1,6 +1,7 @@
 .tags--list {
   list-style: none;
   text-align: left;
+  position: absolute;
 }
 .tags--title {
   text-align: left;
@@ -25,4 +26,12 @@
 }
 .search--input {
   max-width: 500px;
+}
+.label-warning {
+  margin: .25em;
+}
+.question {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }

@@ -5,7 +5,7 @@ emcPingApp.controller('searchResultsCtrl', function($scope, $location,$route, lo
     $scope.saveQuestion = function(question){
         questionService.setQuestion(question);
         console.log(questionService.getQuestion());
-        $location.path('/postAnswer/:question.id');
+        $location.url('/postAnswer/'+ question._id);
         $route.reload();
 
     }
