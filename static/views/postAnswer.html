@@ -9,7 +9,7 @@
     <span ng-repeat="tag in tags" class="label label-warning">
         {{tag}}
     </span>
-    <hr>
+
 
     <p></p>
 
@@ -29,7 +29,7 @@
         <div class='login'>
           <div class='form-group'>
             <label class='control-label'>Post Your Answer here:</label>
-            <input class='form-control' type="text" ng-model="answerFormData.content">
+            <input class='form-control' style="width: 500px;" type="text" ng-model="answerFormData.content">
               <br>
             <input class='btn btn-default' type="submit" value="Submit" ng-click="postAnswer()">
           </div>

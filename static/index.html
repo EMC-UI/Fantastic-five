@@ -64,7 +64,6 @@
 
     <div>
         <div class="pageHeader">
-
             <div class="pageLeftMenu" ng-controller="pingCtrl">
                 <h3 class='tags--title'>Tags</h3>
                 <nav>
@@ -77,8 +76,7 @@
             </div>
 
             <div class="pageSearch" ng-controller="searchQuestionCtrl">
-
-              <form ng-submit="submit()">
+                <form ng-submit="submit()">
                 <div class="input-group search--input">
                         <input type="text" class="form-control" placeholder="Search for..." ng-model="formData.title" required>
                         <span class="input-group-btn">
@@ -87,6 +85,9 @@
                 </div>
               </form>
             </div>
+
+            <div ng-controller="searchQuestionCtrl" ng-init="recentQuestions()">
+                </div>
             <!--<div class="pageContent">-->
                 <!--<h2>Questions</h2>-->
             <!--</div>-->
